@@ -6,6 +6,9 @@ Provides an easy API for accessing all data- attributes on an element.
 How to use
 ----------
 
+This is an element shortcut (prototype method) that emulates functionality in jQuery
+that allows you to access all data-attributes easily from within element storage.
+
 #html
     <a href='#' data-title='hi there' data-tip-position='left'>link</a>
 
