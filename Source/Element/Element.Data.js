@@ -19,7 +19,7 @@ requires:
 !function() {
     "use strict"
 
-    var formatDataProperty = function(prop) {
+    function formatDataProperty(prop) {
         return prop.replace('data-', '').camelCase()
     }
 
