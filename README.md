@@ -16,7 +16,8 @@ keys. So, `data-this-name` will become `thisName` as key.
 
 Several examples:
 
-#js
+```javascript
+
     // eg markup: <a href='#' data-title='hi there' data-tip-position='left'>link</a>
 
     // make data attributes in all links available to elements via storage
@@ -30,3 +31,4 @@ Several examples:
 
     // get an element, set a data attribute and force-refresh when getting it
     document.getElement("a").set("data-title", "Simon says").data("title", true);
+```
