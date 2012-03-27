@@ -1,12 +1,20 @@
 data-mootools
 =============
-Provides an easy API for accessing all data- attributes on an element.
+
+![Screenshot](https://github.com/DimitarChristoff/data-mootools/raw/master/data-mootools.png)
+
+A poly-fill that provides an easy API for accessing all data- attributes on an element.
+It emulates the *.data* functionality found in jQuery that grabs any HTML5 data- attributes from
+an element and makes them available for future reference without further DOM access.
 
 How to use
 ----------
 
-This is an element shortcut (prototype method) that emulates functionality in jQuery
-that allows you to access all data-attributes easily from within element storage.
+This is an element shortcut (prototype method) that stores the attributes within element storage
+after it 'normalises' them. Normalising being camel-casing - think CSS attributes vs .style collection
+keys. So, `data-this-name` will become `thisName` as key.
+
+Several examples:
 
 #js
     // eg markup: <a href='#' data-title='hi there' data-tip-position='left'>link</a>
