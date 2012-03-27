@@ -48,10 +48,7 @@ requires:
                 this.store('dataCollection', data)
             }
 
-            if (!property)
-                return data
-
-            return data[formatDataProperty(property)] || null
+            return property ? data[formatDataProperty(property)] || null : data
         }
     })
 }()
