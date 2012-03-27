@@ -9,7 +9,7 @@ authors: [Dimitar Christoff]
 
 license: MIT-style license.
 
-provides: [Element.prototype.data]
+provides: Element.data
 
 requires:
  - Core/Element
