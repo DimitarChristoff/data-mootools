@@ -32,3 +32,9 @@ Several examples:
     // get an element, set a data attribute and force-refresh when getting it
     document.getElement("a").set("data-title", "Simon says").data("title", true);
 ```
+
+Testing
+-------
+
+A full suite of tests is provided based upon node / Buster.js - see the `/test` direcgtory and the 
+README.md there for further reference. 

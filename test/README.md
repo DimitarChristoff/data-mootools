@@ -31,7 +31,7 @@ dchristoff@Dimitars-iMac:~/projects/data-mootools (master):
 > buster server
 buster-server running on http://localhost:1111
 
-dchristoff@Dimitars-iMac:~/projects/mailcheck (master):
+dchristoff@Dimitars-iMac:~/projects/data-mailcheck (master):
 > buster test
 Internet Explorer 8.0 Windows: .........
 Firefox 13.0a2 OS X:           .........
