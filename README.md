@@ -29,6 +29,14 @@ Several examples:
     // read something from storage - return data-tip-position
     document.getElement("a").data("tipPosition");
 
+    // many ways to access dynamically:
+    element.data("tipPosition") == element.data("tip-position"); // true
+    element.data("tipPosition") == element.data("data-tip-position"); // true
+
+    // static collection
+    var data = element.data();
+    data['tipPosition'] == element.get("data-tip-position"); // true
+    
     // get an element, set a data attribute and force-refresh when getting it
     document.getElement("a").set("data-title", "Simon says").data("title", true);
 ```
