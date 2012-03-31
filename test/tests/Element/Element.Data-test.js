@@ -38,6 +38,12 @@ buster.testCase("Data polyfill tests", {
         buster.assert.isTrue(typeof data['placement'] == 'string' && typeof data['linkTitle'] == 'string');
     },
 
+    "Expect .data('linkTitle') to equal .data('data-link-title') and .data('link-title')": function() {
+        var el = this.children[0];
+	el.data();
+	buster.assert.isTrue(el.data('linkTitle') == el.data('data-link-title') && el.data('linkTitle') == el.data('link-title'));
+    },
+
     "Expect .data on the first element on an undefined property to be null": function() {
         buster.assert.isNull(this.children[0].data('foo'));
     },
