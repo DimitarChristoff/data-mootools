@@ -36,5 +36,5 @@ Several examples:
 Testing
 -------
 
-A full suite of tests is provided based upon node / Buster.js - see the `/test` direcgtory and the 
+A full suite of tests is provided based upon node / Buster.js - see the `/test` directory and the 
 README.md there for further reference. 
