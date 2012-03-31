@@ -34,7 +34,7 @@ requires:
 
             if (!data || force === true) {
                 data = {}
-                attribs = !Object.propertyIsEnumerable(this, 'attributes') ? this.attributes || [] : []
+                attribs = this.attributes || []
                 for (len = attribs.length; ii < len; ++ii) {
                     if (attribs[ii].name.indexOf('data-') === 0) {
                         data[formatDataProperty(attribs[ii].name)] = attribs[ii].value
