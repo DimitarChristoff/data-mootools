@@ -1,21 +1,21 @@
 /*
- ---
+---
 
- name: data-mootools
+name: data-mootools
 
- description: An API for access to data-attributes in elements.
+description: An API for access to data-attributes in elements.
 
- authors: [Dimitar Christoff]
+authors: [Dimitar Christoff]
 
- license: MIT-style license.
+license: MIT-style license.
 
- provides: Element.data
+provides: Element.data
 
- requires:
+requires:
  - Core/Element
 
- ...
- */
+...
+*/
 (function(){
 	"use strict";
 
