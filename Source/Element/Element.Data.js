@@ -1,54 +1,54 @@
 /*
----
+ ---
 
-name: data-mootools
+ name: data-mootools
 
-description: An API for access to data-attributes in elements.
+ description: An API for access to data-attributes in elements.
 
-authors: [Dimitar Christoff]
+ authors: [Dimitar Christoff]
 
-license: MIT-style license.
+ license: MIT-style license.
 
-provides: Element.data
+ provides: Element.data
 
-requires:
+ requires:
  - Core/Element
 
-...
-*/
-!function() {
-    "use strict"
+ ...
+ */
+(function(){
+	"use strict";
 
-    function formatDataProperty(prop) {
-        return prop.replace('data-', '').camelCase()
-    }
+	function formatDataProperty(prop){
+		return prop.replace('data-', '').camelCase();
+	}
 
-    [Document, Element].invoke('implement', {
+	[Document, Element].invoke('implement', {
 
-        data: function(property, force) {
-            var data = this.retrieve('dataCollection'),
-                ii = 0,
-                len,
-                hasData = false,
-                attribs
+		data: function(property, force){
+			var data = this.retrieve('dataCollection'),
+				ii = 0,
+				len,
+				hasData = false,
+				attribs;
 
-            if (!data || force === true) {
-                data = {}
-                attribs = this.attributes || []
-                for (len = attribs.length; ii < len; ++ii) {
-                    if (attribs[ii].name.indexOf('data-') === 0) {
-                        data[formatDataProperty(attribs[ii].name)] = attribs[ii].value
-                        hasData = true
-                    }
-                }
+			if (!data || force === true) {
+				data = {};
+				attribs = this.attributes || [];
+				for (len = attribs.length; ii < len; ++ii) {
+					if (attribs[ii].name.indexOf('data-') === 0) {
+						data[formatDataProperty(attribs[ii].name)] = attribs[ii].value;
+						hasData = true;
+					}
+				}
 
-                if (!hasData)
-                    data = null
+				if (!hasData)
+					data = null;
 
-                this.store('dataCollection', data)
-            }
+				this.store('dataCollection', data);
+			}
 
-            return property ? data[formatDataProperty(property)] || null : data
-        }
-    })
-}()
+			return property ? data[formatDataProperty(property)] || null : data;
+		}
+	});
+}());
