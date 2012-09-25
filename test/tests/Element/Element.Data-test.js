@@ -53,6 +53,11 @@ buster.testCase("Data polyfill tests", {
         buster.assert.isNull(data);
     },
 
+	"Expect .data('prop') to be null": function() {
+		var data = this.children.getLast().data('prop');
+		buster.assert.isNull(data);
+	},
+
     "Expect .data when force is true to re-read the value from the actual element": function() {
         var placementOld = this.children[0].data("placement");
         this.children[0].set("data-placement", "outside");
