@@ -47,6 +47,9 @@ requires:
 
 				this.store('dataCollection', data);
 			}
+			else {
+				hasData = true;
+			}
 
 			return property ? hasData && data[formatDataProperty(property)] || null : data;
 		}
