@@ -7,10 +7,11 @@ buster.testCase("Data polyfill tests", {
 	setUp: function() {
 		this.element = new Element("div", {
 			html: [
-				'<a id="nav" rel="twipsy" your-data-id="fail" data-placement="below" data-link-title="coda was here" href=#>link 1</a>',
-				'<a id="nav" rel="twipsy" data-placement="above" data-title="coda was here again" href=#>link 2</a>',
-				'<a id="nav" rel="twipsy" data-placement="left" data-title="now i am gone" href=#>link 3</a>',
-				'<a id="nav" rel="twipsy" href=#>link 4</a>'
+				'<a rel="twipsy" your-data-id="fail" data-placement="below" data-link-title="coda was here" href=#>link 1</a>',
+				'<a rel="twipsy" data-placement="above" data-title="coda was here again" href=#>link 2</a>',
+				'<a rel="twipsy" data-placement="left" data-title="now i am gone" href=#>link 3</a>',
+				'<a rel="twipsy" data-hi="there" data-something=\'{"foo":"bar"}\' href=#>link 4</a>',
+				'<a rel="twipsy" href=#>link 5</a>'
 			]
 		});
 
@@ -18,7 +19,7 @@ buster.testCase("Data polyfill tests", {
 	},
 
 	"Expect element to have 4 children": function() {
-		buster.assert.equals(this.element.getChildren('a').length, 4);
+		buster.assert.equals(this.element.getChildren('a').length, 5);
 	},
 
 	"Expect .data on a collection to return an array of data objects": function() {
@@ -68,6 +69,11 @@ buster.testCase("Data polyfill tests", {
 	"Expect NOT to pick-up any attribs that don't start with data- but contain it": function() {
 		var data = this.children[0].data();
 		buster.assert.equals(Object.keys(data).length, 2);
+	},
+
+	"Expect .data to parse json-like structures and return an object automatically": function(){
+		var data = this.children[3].data('something');
+		buster.assert.equals(data.foo, 'bar');
 	}
 
 });

@@ -17,7 +17,9 @@ requires:
 ...
 */
 (function(){
-	"use strict";
+	'use strict';
+
+	var rbrace = /(?:\{[\s\S]*\}|\[[\s\S]*\])$/;
 
 	function formatDataProperty(prop){
 		return prop.replace('data-', '').camelCase();
@@ -37,7 +39,10 @@ requires:
 				attribs = this.attributes || [];
 				for (len = attribs.length; ii < len; ++ii) {
 					if (attribs[ii].name.indexOf('data-') === 0) {
-						data[formatDataProperty(attribs[ii].name)] = attribs[ii].value;
+						data[formatDataProperty(attribs[ii].name)] = attribs[ii].value.test(rbrace)
+							? JSON.decode(attribs[ii].value)
+							: attribs[ii].value;
+
 						hasData = true;
 					}
 				}
