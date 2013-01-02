@@ -16,7 +16,8 @@ requires:
 
 ...
 */
-(function(){
+/*jshint mootools:true */
+;(function(){
 	'use strict';
 
 	var rbrace = /(?:\{[\s\S]*\}|\[[\s\S]*\])$/;
@@ -25,38 +26,49 @@ requires:
 		return prop.replace('data-', '').camelCase();
 	}
 
-	[Document, Element].invoke('implement', {
+	var wrap = function(){
 
-		data: function(property, force){
-			var data = this.retrieve('dataCollection'),
-				ii = 0,
-				len,
-				hasData = false,
-				attribs;
+		[Document, Element].invoke('implement', {
 
-			if (!data || force === true) {
-				data = {};
-				attribs = this.attributes || [];
-				for (len = attribs.length; ii < len; ++ii) {
-					if (attribs[ii].name.indexOf('data-') === 0) {
-						data[formatDataProperty(attribs[ii].name)] = attribs[ii].value.test(rbrace)
-							? JSON.decode(attribs[ii].value)
-							: attribs[ii].value;
+			data: function(property, force){
+				var data = this.retrieve('dataCollection'),
+					ii = 0,
+					len,
+					hasData = false,
+					attribs;
 
-						hasData = true;
+				if (!data || force === true) {
+					data = {};
+					attribs = this.attributes || [];
+					for (len = attribs.length; ii < len; ++ii) {
+						if (attribs[ii].name.indexOf('data-') === 0) {
+							data[formatDataProperty(attribs[ii].name)] = attribs[ii].value.test(rbrace)
+								? JSON.decode(attribs[ii].value)
+								: attribs[ii].value;
+
+							hasData = true;
+						}
 					}
+
+					if (!hasData)
+						data = null;
+
+					this.store('dataCollection', data);
+				}
+				else {
+					hasData = true;
 				}
 
-				if (!hasData)
-					data = null;
-
-				this.store('dataCollection', data);
+				return property ? hasData && data[formatDataProperty(property)] || null : data;
 			}
-			else {
-				hasData = true;
-			}
+		});
+	};
 
-			return property ? hasData && data[formatDataProperty(property)] || null : data;
-		}
-	});
+	if (typeof define === 'function' && define.amd) {
+		// returns an empty module
+		define(wrap);
+	}
+	else {
+		wrap();
+	}
 }());
